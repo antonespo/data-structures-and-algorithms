@@ -1,7 +1,7 @@
 {
-  "name": "ts-project",
+  "name": "node-ts-project",
   "version": "1.0.0",
-  "description": "`clear | tsc | node main.js`",
+  "description": "`Node project`",
   "main": "index.js",
   "scripts": {
     "test": "jest",
