@@ -30,11 +30,10 @@ This repository contains implementations of various data structures and algorith
 
 The following data structures are included in this repository:
 
-- **Arrays**: Dynamic arrays, common operations (insert, delete, etc.)
-- **Linked Lists**: Singly and doubly linked lists
+- **Linked Lists**: Singly and doubly linked lists ✅
 - **Stacks and Queues**: Using arrays and linked lists
 - **Trees**: Binary trees, Binary Search Trees (BST), AVL trees
-- **Heaps**: Min heaps and max heaps
+- **Heaps**: Min heaps and max heaps 🏗️
 - **Graphs**: Representations using adjacency lists and matrices
 - **Hash Tables**: Implementation using arrays and handling collisions
 
@@ -49,11 +48,11 @@ The repository also includes implementations of various algorithms, including:
 
 ### Sorting Algorithms
 
-- Bubble Sort
-- Selection Sort
-- Insertion Sort
-- Merge Sort
-- Quick Sort
+- Bubble Sort ✅
+- Selection Sort ✅
+- Insertion Sort ✅
+- Merge Sort ✅
+- Quick Sort ✅
 
 ### Tree Traversal Algorithms
 
