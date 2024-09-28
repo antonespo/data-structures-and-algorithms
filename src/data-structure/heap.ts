@@ -1,4 +1,4 @@
-export class Heap {
+export class MinHeap {
   private heap: number[];
 
   constructor() {
@@ -30,7 +30,7 @@ export class Heap {
     let index = this.heap.length - 1;
     while (index > 0 && this.heap[index] < this.heap[this.getParentIndex(index)]) {
       this.swap(index, this.getParentIndex(index));
-      index = this.getParentIndex(index); // Use parent index here
+      index = this.getParentIndex(index);
     }
   }
 

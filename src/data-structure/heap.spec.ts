@@ -1,10 +1,10 @@
-import { Heap } from './heap';
+import { MinHeap } from './heap';
 
 describe('Min-Heap', () => {
-  let heap: Heap;
+  let heap: MinHeap;
 
   beforeEach(() => {
-    heap = new Heap();
+    heap = new MinHeap();
   });
 
   test('should insert elements and maintain min-heap property', () => {
