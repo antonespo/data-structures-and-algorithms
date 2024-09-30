@@ -65,7 +65,7 @@ Tree traversal refers to the process of visiting each node in a tree exactly onc
 ### 2. Breadth-First Traversal
 
 - **Level-Order Traversal**:
-  - Visit nodes level by level from top to bottom.
+  - Visit nodes level by level from top to bottom. The nodes on the same level are visited before going to the next level in the tree.
   - Uses a queue to process nodes in a breadth-first manner.
 
 ## Insertion, Deletion & Common Operations in Trees
