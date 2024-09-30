@@ -27,6 +27,31 @@ There are two types of heaps:
 4. **Insertion and Deletion**:
    - Insertions and deletions maintain the heap property through restructuring (heapify operations).
 
+## Insertion in a Heap
+
+When inserting an element into a heap, the following steps are performed:
+
+1. **Add the New Element**:
+
+   - The new element is added at the end of the heap (at the last position in the array representation) to maintain the complete tree property.
+
+2. **Heapify Up Operation**:
+   - The newly added element may violate the heap property if it is smaller or larger than its parent (depending on whether it’s a Min or Max Heap).
+   - To restore the heap property, the element is repeatedly swapped with its parent until the heap property is restored. This process is called **heapify up**.
+
+## Extraction in a Heap
+
+When extracting the minimum or maximum element from a heap, the following steps are performed:
+
+1. **Swap and Remove the Root**:
+
+   - The root element, which is the minimum (in a Min Heap) or maximum (in a Max Heap), is removed.
+   - To maintain the complete tree property, the last element in the heap is moved to the root position.
+
+2. **Heapify Down Operation**:
+   - The element that was moved to the root may violate the heap property.
+   - To restore the heap property, the element is repeatedly swapped with its smallest (Min Heap) or largest (Max Heap) child until the heap property is restored. This process is called **heapify down**.
+
 ## Complexity
 
 | Operation       | Time Complexity | Space Complexity |
