@@ -11,54 +11,31 @@ class TreeNode<T> {
 class BinarySearchTree<T> {
   root: TreeNode<T> | null = null;
 
-  insert(value: T) {
+  // Insert a value into the tree
+  insert(value: T): void {
     const newNode = new TreeNode(value);
     if (!this.root) {
       this.root = newNode;
       return;
-    } else {
-      this.insertNode(this.root, newNode);
     }
+    this.insertNode(this.root, newNode);
   }
 
-  private insertNode(currentNode: TreeNode<T>, newNode: TreeNode<T>) {
+  // Helper method to recursively insert a new node into the correct position
+  private insertNode(currentNode: TreeNode<T>, newNode: TreeNode<T>): void {
     if (newNode.value < currentNode.value) {
-      // Insert into the left subtree
       if (currentNode.left === null) {
         currentNode.left = newNode;
       } else {
         this.insertNode(currentNode.left, newNode);
       }
     } else {
-      // Insert into the right subtree
       if (currentNode.right === null) {
         currentNode.right = newNode;
       } else {
         this.insertNode(currentNode.right, newNode);
       }
     }
-  }
-
-  // Find the minimum value node starting from a given node
-  private findMinNode(node: TreeNode<T> | null) {
-    if (node === null) {
-      return null;
-    }
-    while (node?.left !== null) {
-      node = node!.left;
-    }
-    return node;
-  }
-
-  // Find the maximum value node starting from a given node
-  private findMaxNode(node: TreeNode<T> | null) {
-    if (node === null) {
-      return null;
-    }
-    while (node?.right !== null) {
-      node = node!.right;
-    }
-    return node;
   }
 
   // Find the minimum value in the tree
@@ -73,32 +50,43 @@ class BinarySearchTree<T> {
     return node ? node.value : null;
   }
 
+  // Helper method to find the node with the minimum value
+  private findMinNode(node: TreeNode<T> | null): TreeNode<T> | null {
+    while (node?.left !== null) {
+      node = node!.left;
+    }
+    return node;
+  }
+
+  // Helper method to find the node with the maximum value
+  private findMaxNode(node: TreeNode<T> | null): TreeNode<T> | null {
+    while (node?.right !== null) {
+      node = node!.right;
+    }
+    return node;
+  }
+
+  // Search for a node with a specific value
   search(value: T): TreeNode<T> | null {
     return this.searchNode(this.root, value);
   }
 
+  // Helper method to recursively search for a node
   private searchNode(node: TreeNode<T> | null, value: T): TreeNode<T> | null {
-    if (node === null) {
-      return null;
-    }
-
-    if (value < node.value) {
-      return this.searchNode(node.left, value); // Search in the left subtree
-    } else if (value > node.value) {
-      return this.searchNode(node.right, value); // Search in the right subtree
-    } else {
+    if (node === null || value === node.value) {
       return node;
     }
+    return value < node.value ? this.searchNode(node.left, value) : this.searchNode(node.right, value);
   }
 
-  remove(value: T) {
+  // Remove a node with a given value
+  remove(value: T): void {
     this.root = this.removeNode(this.root, value);
   }
 
+  // Helper method to recursively remove a node from the tree
   private removeNode(node: TreeNode<T> | null, value: T): TreeNode<T> | null {
-    if (node === null) {
-      return null;
-    }
+    if (node === null) return null; // Node not found
 
     if (value < node.value) {
       node.left = this.removeNode(node.left, value); // Search in the left subtree
@@ -108,33 +96,61 @@ class BinarySearchTree<T> {
       return node;
     }
 
-    // Case 1: The node has no children
+    // Node to be deleted is found
     if (node.left === null && node.right === null) {
-      node = null;
-      return node;
-    }
-
-    // Case 2: The node has one child
-    if (node.left === null) {
-      return node.right;
+      return null; // No children (leaf node), delete it by returning null
+    } else if (node.left === null) {
+      return node.right; // One child (right), replace with right child
     } else if (node.right === null) {
-      return node.left;
+      return node.left; // One child (left), replace with left child
     }
 
-    // Case 3: The node has two children
+    // Node has two children
     const inOrderSuccessor = this.findMinNode(node.right);
-    node.value = inOrderSuccessor!.value;
-    node.right = this.removeNode(node.right, inOrderSuccessor!.value);
+    if (inOrderSuccessor !== null) {
+      node.value = inOrderSuccessor.value;
+      node.right = this.removeNode(node.right, inOrderSuccessor.value); // Delete the in-order successor
+    }
+
     return node;
   }
 
+  // In-order traversal (Left, Root, Right)
   inOrderTraversal(callback: (value: T) => void): void {
-    throw new Error('Method not implemented.');
+    this.inOrder(this.root, callback);
   }
+
+  private inOrder(node: TreeNode<T> | null, callback: (value: T) => void): void {
+    if (node !== null) {
+      this.inOrder(node.left, callback);
+      callback(node.value);
+      this.inOrder(node.right, callback);
+    }
+  }
+
+  // Pre-order traversal (Root, Left, Right)
   preOrderTraversal(callback: (value: T) => void): void {
-    throw new Error('Method not implemented.');
+    this.preOrder(this.root, callback);
   }
+
+  private preOrder(node: TreeNode<T> | null, callback: (value: T) => void): void {
+    if (node !== null) {
+      callback(node.value);
+      this.preOrder(node.left, callback);
+      this.preOrder(node.right, callback);
+    }
+  }
+
+  // Post-order traversal (Left, Right, Root)
   postOrderTraversal(callback: (value: T) => void): void {
-    throw new Error('Method not implemented.');
+    this.postOrder(this.root, callback);
+  }
+
+  private postOrder(node: TreeNode<T> | null, callback: (value: T) => void): void {
+    if (node !== null) {
+      this.postOrder(node.left, callback);
+      this.postOrder(node.right, callback);
+      callback(node.value);
+    }
   }
 }
