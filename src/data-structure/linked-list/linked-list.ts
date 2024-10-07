@@ -1,4 +1,4 @@
-class SinglyLinkedNode<T> {
+export class SinglyLinkedNode<T> {
   value: T;
   next: SinglyLinkedNode<T> | null;
   constructor(nodeValue: T) {
@@ -79,7 +79,7 @@ export class SinlgyLinkedList<T> {
 }
 
 // Define the Node class for the doubly linked list
-class DoublyLinkedListNode<T> {
+export class DoublyLinkedListNode<T> {
   value: T;
   next: DoublyLinkedListNode<T> | null = null;
   prev: DoublyLinkedListNode<T> | null = null;

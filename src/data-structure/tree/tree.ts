@@ -1,4 +1,4 @@
-class TreeNode<T> {
+export class TreeNode<T> {
   value: T;
   left: TreeNode<T> | null = null;
   right: TreeNode<T> | null = null;
@@ -8,7 +8,7 @@ class TreeNode<T> {
   }
 }
 
-class BinarySearchTree<T> {
+export class BinarySearchTree<T> {
   root: TreeNode<T> | null = null;
 
   // Insert a value into the tree
