@@ -75,8 +75,8 @@ export class ArrayStack<T> implements Stack<T> {
  * Stack implementation using a singly linked list.
  */
 export class LinkedListStack<T> implements Stack<T> {
-  private linkedList: SinglyLinkedList<T> = new SinglyLinkedList();
-  private stackSize: number = 0;
+  private linkedList = new SinglyLinkedList<T>();
+  private stackSize = 0;
 
   push(element: T): void {
     this.linkedList.append(element);

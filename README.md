@@ -31,7 +31,7 @@ This repository contains implementations of various data structures and algorith
 The following data structures are included in this repository:
 
 - **Linked Lists**: Singly and doubly linked lists ✅
-- **Stacks and Queues**: Using arrays and linked lists 🏗️
+- **Stacks and Queues**: Using arrays and linked lists ✅
 - **Trees**: Binary trees, Binary Search Trees (BST), AVL trees ✅
 - **Heaps**: Min heaps and max heaps ✅
 - **Graphs**: Representations using adjacency lists and matrices
@@ -43,7 +43,7 @@ The repository also includes implementations of various algorithms, including:
 
 ### Searching Algorithms
 
-- Linear Search
+- Linear Search 🏗️
 - Binary Search
 
 ### Sorting Algorithms
