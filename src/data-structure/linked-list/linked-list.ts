@@ -57,6 +57,31 @@ export class SinglyLinkedList<T> {
   }
 
   /**
+   * Removes the last element from the linked list and returns its value.
+   * If the linked list is empty, `undefined` is returned and the linked list is not modified.
+   */
+  pop(): T | undefined {
+    if (!this.head) {
+      return undefined;
+    }
+
+    if (!this.head.next) {
+      const value = this.head.value;
+      this.head = null;
+      return value;
+    }
+
+    let beforeLast = this.head;
+    while (beforeLast.next && beforeLast.next.next) {
+      beforeLast = beforeLast.next;
+    }
+
+    const value = beforeLast.next?.value;
+    beforeLast.next = null;
+    return value;
+  }
+
+  /**
    * Finds the first node with the specified value.
    * @param value - The value to find.
    * @returns The node containing the value, or `null` if not found.
