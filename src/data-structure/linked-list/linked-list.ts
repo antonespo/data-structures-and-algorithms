@@ -1,20 +1,38 @@
+/**
+ * Represents a node in a singly linked list.
+ */
 export class SinglyLinkedNode<T> {
   value: T;
   next: SinglyLinkedNode<T> | null;
+
+  /**
+   * Creates a new singly linked list node.
+   * @param nodeValue - The value to store in the node.
+   */
   constructor(nodeValue: T) {
     this.value = nodeValue;
     this.next = null;
   }
 }
 
-export class SinlgyLinkedList<T> {
+/**
+ * A singly linked list implementation.
+ */
+export class SinglyLinkedList<T> {
   head: SinglyLinkedNode<T> | null;
+
+  /**
+   * Creates an empty singly linked list.
+   */
   constructor() {
     this.head = null;
   }
 
-  // Add item at the end of the linked list
-  append(value: T) {
+  /**
+   * Adds an item at the end of the linked list.
+   * @param value - The value to be added.
+   */
+  append(value: T): void {
     const node = new SinglyLinkedNode<T>(value);
     if (!this.head) {
       this.head = node;
@@ -22,31 +40,41 @@ export class SinlgyLinkedList<T> {
     }
 
     let current = this.head;
-    while (!!current.next) {
+    while (current.next) {
       current = current.next;
     }
     current.next = node;
   }
 
-  // Add item at the beginning of the linked list
-  prepend(value: T) {
+  /**
+   * Adds an item at the beginning of the linked list.
+   * @param value - The value to be added.
+   */
+  prepend(value: T): void {
     const node = new SinglyLinkedNode(value);
     node.next = this.head;
     this.head = node;
   }
 
-  // Find the first element in the list with the given value
-  find(value: T) {
+  /**
+   * Finds the first node with the specified value.
+   * @param value - The value to find.
+   * @returns The node containing the value, or `null` if not found.
+   */
+  find(value: T): SinglyLinkedNode<T> | null {
     let current = this.head;
     while (current && current.value !== value) {
       current = current.next;
     }
-
     return current ?? null;
   }
 
-  // Remove the first node where the value is contained
-  remove(value: T) {
+  /**
+   * Removes the first node with the specified value.
+   * @param value - The value to remove.
+   * @returns `true` if the node was removed; otherwise, `false`.
+   */
+  remove(value: T): boolean {
     if (!this.head) return false;
     if (this.head.value === value) {
       this.head = this.head.next;
@@ -54,20 +82,22 @@ export class SinlgyLinkedList<T> {
     }
 
     let current = this.head;
-    while (current?.next && current.next.value !== value) {
-      current = current?.next ?? null;
+    while (current.next && current.next.value !== value) {
+      current = current.next;
     }
 
     if (current.next) {
       current.next = current.next.next;
       return true;
     }
-
     return false;
   }
 
-  // Convert entire singly-linked list to an array
-  toArray() {
+  /**
+   * Converts the entire linked list to an array.
+   * @returns An array containing all values in the linked list.
+   */
+  toArray(): T[] {
     const array: T[] = [];
     let current = this.head;
     while (current) {
@@ -78,119 +108,131 @@ export class SinlgyLinkedList<T> {
   }
 }
 
-// Define the Node class for the doubly linked list
+/**
+ * Represents a node in a doubly linked list.
+ */
 export class DoublyLinkedListNode<T> {
   value: T;
   next: DoublyLinkedListNode<T> | null = null;
   prev: DoublyLinkedListNode<T> | null = null;
 
+  /**
+   * Creates a new doubly linked list node.
+   * @param value - The value to store in the node.
+   */
   constructor(value: T) {
     this.value = value;
   }
 }
 
+/**
+ * A doubly linked list implementation.
+ */
 export class DoublyLinkedList<T> {
   private head: DoublyLinkedListNode<T> | null = null;
   private tail: DoublyLinkedListNode<T> | null = null;
   private size: number = 0;
 
-  // Insert at the beginning of the list
+  /**
+   * Inserts a node at the beginning of the list.
+   * @param value - The value to insert.
+   */
   insertAtBeginning(value: T): void {
     const newNode = new DoublyLinkedListNode(value);
 
-    if (this.head === null) {
-      // If the list is empty, head and tail both point to the new node
+    if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
     } else {
-      // Insert new node before the current head
       newNode.next = this.head;
       this.head.prev = newNode;
       this.head = newNode;
     }
-
     this.size++;
   }
 
-  // Insert at the end of the list
+  /**
+   * Inserts a node at the end of the list.
+   * @param value - The value to insert.
+   */
   insertAtEnd(value: T): void {
     const newNode = new DoublyLinkedListNode(value);
 
-    if (this.tail === null) {
-      // If the list is empty, head and tail both point to the new node
+    if (!this.tail) {
       this.head = newNode;
       this.tail = newNode;
     } else {
-      // Insert new node after the current tail
       newNode.prev = this.tail;
       this.tail.next = newNode;
       this.tail = newNode;
     }
-
     this.size++;
   }
 
-  // Delete a node by value
+  /**
+   * Deletes a node by its value.
+   * @param value - The value to delete.
+   * @returns `true` if the node was found and deleted; otherwise, `false`.
+   */
   deleteByValue(value: T): boolean {
-    if (this.head === null) return false;
+    if (!this.head) return false;
 
     let current = this.head;
 
-    // Traverse the list to find the node with the value
-    while (current !== null) {
+    while (current) {
       if (current.value === value) {
-        // Node to be deleted is the head node
         if (current === this.head) {
           this.head = this.head.next;
-          if (this.head !== null) this.head.prev = null;
-        }
-        // Node to be deleted is the tail node
-        else if (current === this.tail) {
+          if (this.head) this.head.prev = null;
+        } else if (current === this.tail) {
           this.tail = this.tail.prev;
-          if (this.tail !== null) this.tail.next = null;
-        }
-        // Node is in the middle
-        else {
+          if (this.tail) this.tail.next = null;
+        } else {
           current.prev!.next = current.next;
           current.next!.prev = current.prev;
         }
-
         this.size--;
-        return true; // Value found and deleted
+        return true;
       }
       current = current.next!;
     }
-
-    return false; // Value not found
+    return false;
   }
 
-  // Display the list from head to tail
+  /**
+   * Displays the list from head to tail.
+   */
   displayForward(): void {
     let current = this.head;
     let result = '';
 
-    while (current !== null) {
-      result += current.value + ' <-> ';
+    while (current) {
+      result += `${current.value} <-> `;
       current = current.next;
     }
 
     console.log(result + 'null');
   }
 
-  // Display the list from tail to head
+  /**
+   * Displays the list from tail to head.
+   */
   displayBackward(): void {
     let current = this.tail;
     let result = '';
 
-    while (current !== null) {
-      result += current.value + ' <-> ';
+    while (current) {
+      result += `${current.value} <-> `;
       current = current.prev;
     }
 
     console.log(result + 'null');
   }
 
-  // Get the size of the list
+  /**
+   * Gets the number of nodes in the list.
+   * @returns The size of the list.
+   */
   getSize(): number {
     return this.size;
   }
