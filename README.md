@@ -1,5 +1,8 @@
 # Data Structures and Algorithms
 
+![TypeScript](https://img.shields.io/badge/language-TypeScript-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 Welcome to the **Data Structures and Algorithms** repository! 📚 This repository contains a collection of data structure implementations and algorithm solutions in TypeScript. It's designed to serve as a learning resource and reference for anyone looking to strengthen their understanding of common data structures and algorithms.
 
 ## 📋 Table of Contents
@@ -11,6 +14,7 @@ Welcome to the **Data Structures and Algorithms** repository! 📚 This reposito
   - [🔍 Algorithms Implemented](#-algorithms-implemented)
     - [Searching Algorithms](#searching-algorithms)
     - [Sorting Algorithms](#sorting-algorithms)
+    - [Common Leetcode Patterns](#common-leetcode-patterns)
     - [Tree Traversal Algorithms](#tree-traversal-algorithms)
     - [Graph Algorithms](#graph-algorithms)
     - [Dynamic Programming](#dynamic-programming)
@@ -28,12 +32,12 @@ This repository contains implementations of various data structures and algorith
 
 ## 🌳 Data Structures Implemented
 
-The following data structures are included in this repository:
+Explore each data structure with the links below:
 
-- **Linked Lists**: Singly and doubly linked lists ✅
-- **Stacks and Queues**: Using arrays and linked lists ✅
-- **Trees**: Binary trees, Binary Search Trees (BST), AVL trees ✅
-- **Heaps**: Min heaps and max heaps ✅
+- **[Linked Lists](./src/data-structure/linked-list/linked-list.md)**: Singly and doubly linked lists ✅
+- **[Stacks and Queues](./src/data-structure/stack-and-queue/stack-and-queue.md)**: Using arrays and linked lists ✅
+- **[Trees](./src/data-structure/tree/tree.md)**: Binary trees, Binary Search Trees (BST), AVL trees ✅
+- **[Heaps](./src/data-structure/heap/heap.md)**: Min heaps and max heaps ✅
 - **Graphs**: Representations using adjacency lists and matrices
 - **Hash Tables**: Implementation using arrays and handling collisions
 
@@ -43,10 +47,15 @@ The repository also includes implementations of various algorithms, including:
 
 ### Searching Algorithms
 
-- Linear Search 🏗️
-- Binary Search
+Visit [Searching Algorithms](./src/algorithm/searching/searching.md) for the following:
+
+- Linear Search ✅
+- Binary Search ✅
+- Jump Search ✅
 
 ### Sorting Algorithms
+
+Explore [Sorting Algorithms](./src/algorithm/sorting/sorting.md) including:
 
 - Bubble Sort ✅
 - Selection Sort ✅
@@ -54,7 +63,18 @@ The repository also includes implementations of various algorithms, including:
 - Merge Sort ✅
 - Quick Sort ✅
 
+### Common Leetcode Patterns
+
+Visit [Leetcode Patterns](./src/algorithm/leetcode-pattern/leetcode-pattern.md) for the following:
+
+- Sliding Window 🏗️
+- Two Pointers
+- Fast & Slow Pointers
+- Backtracking
+
 ### Tree Traversal Algorithms
+
+Tree traversals help in accessing tree data structures efficiently:
 
 - In-Order Traversal
 - Pre-Order Traversal
@@ -64,11 +84,15 @@ The repository also includes implementations of various algorithms, including:
 
 ### Graph Algorithms
 
+Algorithms for solving graph-based problems:
+
 - Dijkstra's Algorithm
 - Kruskal's and Prim's Algorithms
 - Topological Sorting
 
 ### Dynamic Programming
+
+Solutions for complex problems broken down into subproblems:
 
 - Fibonacci Series
 - Knapsack Problem
@@ -83,6 +107,7 @@ Follow these steps to set up and use the repository:
    ```bash
    git clone https://github.com/antonespo/data-structures-and-algorithms.git
    cd data-structures-and-algorithms
+
    ```
 
 2. **Install Dependencies**:
@@ -93,7 +118,10 @@ Follow these steps to set up and use the repository:
    ```
 
 3. **Run and Test the Implementations**:
-   You can run each implementation by navigating to the appropriate file and using Node.js, or use a testing framework like `Jest` to run unit tests (if available).
+   Use a testing framework like `Jest` to run unit tests (if available), or run each file individually using Node.js:
+   ```bash
+   npx jest
+   ```
 
 ## 🤝 Contribution Guidelines
 
