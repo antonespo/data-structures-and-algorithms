@@ -65,12 +65,10 @@ Explore [Sorting Algorithms](./src/algorithm/sorting/sorting.md) including:
 
 ### Common Leetcode Patterns
 
-Visit [Leetcode Patterns](./src/algorithm/leetcode-pattern/leetcode-pattern.md) for the following:
-
-- Sliding Window 🏗️
-- Two Pointers
-- Fast & Slow Pointers
-- Backtracking
+- [Sliding Window](./src/algorithm/leetcode-pattern/sliding-window/sliding-window.md) 🏗️
+- [Two Pointers](./src/algorithm/leetcode-pattern/two-pointers/two-pointers.md)
+- [Fast & Slow Pointers](./src/algorithm/leetcode-pattern/fast-slow-pointers/fast-slow-pointers.md)
+- [Backtracking](./src/algorithm/leetcode-pattern/backtracking/backtracking.md)
 
 ### Tree Traversal Algorithms
 
