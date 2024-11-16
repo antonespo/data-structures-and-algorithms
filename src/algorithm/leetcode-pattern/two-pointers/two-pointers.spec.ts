@@ -31,7 +31,8 @@ describe('validPalindrome', () => {
     ['abca', true],
     ['racecar', true],
     ['hello', false],
-    ['deeee', true]
+    ['deeee', true],
+    ['raceeicar', true]
   ])('validPalindrome("%s") should return %s', (input, expected) => {
     expect(validPalindrome(input)).toBe(expected);
   });
@@ -48,6 +49,17 @@ describe('reverseWords', () => {
   });
 });
 
+describe('twoSum', () => {
+  it.each([
+    [[2, 7, 11, 15], 9, [1, 2]],
+    [[2, 3, 4], 6, [1, 3]],
+    [[-1, 0], -1, [1, 2]],
+    [[2, 4, 6, 8, 10], 7, []]
+  ])('twoSum(%j, %d) should return %j', (numbers, target, expected) => {
+    expect(twoSum(numbers, target)).toEqual(expected);
+  });
+});
+
 describe('maxArea', () => {
   it.each([
     [[1, 8, 6, 2, 5, 4, 8, 3, 7], 49],
@@ -56,15 +68,5 @@ describe('maxArea', () => {
     [[1, 2, 1], 2]
   ])('maxArea(%j) should return %d', (heights, expected) => {
     expect(maxArea(heights)).toBe(expected);
-  });
-});
-
-describe('twoSum', () => {
-  it.each([
-    [[2, 7, 11, 15], 9, [1, 2]],
-    [[2, 3, 4], 6, [1, 3]],
-    [[-1, 0], -1, [1, 2]]
-  ])('twoSum(%j, %d) should return %j', (numbers, target, expected) => {
-    expect(twoSum(numbers, target)).toEqual(expected);
   });
 });
