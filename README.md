@@ -65,8 +65,8 @@ Explore [Sorting Algorithms](./src/algorithm/sorting/sorting.md) including:
 
 ### Common Leetcode Patterns
 
-- [Sliding Window](./src/algorithm/leetcode-pattern/sliding-window/sliding-window.md) 🏗️
-- [Two Pointers](./src/algorithm/leetcode-pattern/two-pointers/two-pointers.md)
+- [Sliding Window](./src/algorithm/leetcode-pattern/sliding-window/sliding-window.md) ✅
+- [Two Pointers](./src/algorithm/leetcode-pattern/two-pointers/two-pointers.md) 🏗️
 - [Fast & Slow Pointers](./src/algorithm/leetcode-pattern/fast-slow-pointers/fast-slow-pointers.md)
 - [Backtracking](./src/algorithm/leetcode-pattern/backtracking/backtracking.md)
 
