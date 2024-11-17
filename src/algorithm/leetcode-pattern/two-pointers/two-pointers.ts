@@ -1,3 +1,5 @@
+import { quickSort } from '../../sorting/sorting';
+
 /**
  * LeetCode Problem #283 - Move Zeroes
  *
@@ -199,7 +201,15 @@ export function maxArea(height: number[]): number {
  * @see https://leetcode.com/problems/remove-duplicates-from-sorted-array/
  */
 export function removeDuplicates(nums: number[]): number {
-  return 0;
+  if (nums.length <= 1) return nums.length;
+  let left = 0; // Pointer for the position of the last unique element.
+  for (let right = 1; right < nums.length; right++) {
+    if (nums[right] !== nums[left]) {
+      left++; // Move the left pointer to the next position for a unique value.
+      nums[left] = nums[right]; // Overwrite the next position with the unique value.
+    }
+  }
+  return left + 1; // Length of unique elements.
 }
 
 /**
