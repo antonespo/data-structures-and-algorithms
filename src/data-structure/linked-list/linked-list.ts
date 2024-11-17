@@ -1,9 +1,9 @@
 /**
  * Represents a node in a singly linked list.
  */
-export class SinglyLinkedNode<T> {
+export class SinglyLinkedListNode<T> {
   value: T;
-  next: SinglyLinkedNode<T> | null;
+  next: SinglyLinkedListNode<T> | null;
 
   /**
    * Creates a new singly linked list node.
@@ -19,7 +19,7 @@ export class SinglyLinkedNode<T> {
  * A singly linked list implementation.
  */
 export class SinglyLinkedList<T> {
-  head: SinglyLinkedNode<T> | null;
+  head: SinglyLinkedListNode<T> | null;
 
   /**
    * Creates an empty singly linked list.
@@ -33,7 +33,7 @@ export class SinglyLinkedList<T> {
    * @param value - The value to be added.
    */
   append(value: T): void {
-    const node = new SinglyLinkedNode<T>(value);
+    const node = new SinglyLinkedListNode<T>(value);
     if (!this.head) {
       this.head = node;
       return;
@@ -51,7 +51,7 @@ export class SinglyLinkedList<T> {
    * @param value - The value to be added.
    */
   prepend(value: T): void {
-    const node = new SinglyLinkedNode(value);
+    const node = new SinglyLinkedListNode(value);
     node.next = this.head;
     this.head = node;
   }
@@ -86,7 +86,7 @@ export class SinglyLinkedList<T> {
    * @param value - The value to find.
    * @returns The node containing the value, or `null` if not found.
    */
-  find(value: T): SinglyLinkedNode<T> | null {
+  find(value: T): SinglyLinkedListNode<T> | null {
     let current = this.head;
     while (current && current.value !== value) {
       current = current.next;

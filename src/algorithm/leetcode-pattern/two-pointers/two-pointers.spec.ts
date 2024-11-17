@@ -1,4 +1,4 @@
-import { maxArea, moveZeroes, reverseWords, twoSum, validPalindrome } from './two-pointers';
+import { maxArea, moveZeroes, removeDuplicates, reverseWords, threeSum, twoSum, validPalindrome } from './two-pointers';
 
 describe('moveZeroes', () => {
   it.each([
@@ -68,5 +68,41 @@ describe('maxArea', () => {
     [[1, 2, 1], 2]
   ])('maxArea(%j) should return %d', (heights, expected) => {
     expect(maxArea(heights)).toBe(expected);
+  });
+});
+
+describe('removeDuplicates', () => {
+  it.each([
+    [[1, 1, 2], 2, [1, 2]],
+    [[0, 0, 1, 1, 1, 2, 2, 3, 3, 4], 5, [0, 1, 2, 3, 4]],
+    [[1], 1, [1]],
+    [[], 0, []]
+  ])('removeDuplicates(%j) should return length %d and modify to %j', (nums, expectedLength, expected) => {
+    const length = removeDuplicates(nums);
+    expect(length).toBe(expectedLength);
+    expect(nums.slice(0, length)).toEqual(expected);
+  });
+});
+
+describe('threeSum', () => {
+  it.each([
+    [
+      [-1, 0, 1, 2, -1, -4],
+      [
+        [-1, -1, 2],
+        [-1, 0, 1]
+      ]
+    ],
+    [[0, 1, 1], []],
+    [[0, 0, 0], [[0, 0, 0]]],
+    [
+      [-2, 0, 1, 1, 2],
+      [
+        [-2, 0, 2],
+        [-2, 1, 1]
+      ]
+    ]
+  ])('threeSum(%j) should return %j', (nums, expected) => {
+    expect(threeSum(nums)).toEqual(expect.arrayContaining(expected));
   });
 });

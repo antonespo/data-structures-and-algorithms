@@ -166,6 +166,54 @@ export function twoSum(numbers: number[], target: number): number[] {
  * @see https://leetcode.com/problems/container-with-most-water/
  */
 export function maxArea(height: number[]): number {
-  // Implementation placeholder
+  const computeArea = (left: number, right: number) => (right - left) * Math.min(height[left], height[right]);
+  let left = 0;
+  let right = height.length - 1;
+  let maxWater = 0;
+
+  while (left < right) {
+    // Compute the area for the current pair of pointers
+    maxWater = Math.max(maxWater, computeArea(left, right));
+
+    // Move the pointer with the shorter height
+    if (height[left] < height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  return maxWater;
+}
+
+/**
+ * Removes duplicates from a sorted array in place, returning the length of the unique elements.
+ *
+ * @param {number[]} nums - The sorted array.
+ * @returns {number} The length of the array with unique elements.
+ *
+ * @example
+ * removeDuplicates([1,1,2]); // Returns 2 and modifies nums to [1,2,_]
+ * removeDuplicates([0,0,1,1,1,2,2,3,3,4]); // Returns 5 and modifies nums to [0,1,2,3,4,_]
+ *
+ * @see https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+ */
+export function removeDuplicates(nums: number[]): number {
   return 0;
+}
+
+/**
+ * Finds all unique triplets in the array that sum to zero.
+ *
+ * @param {number[]} nums - The input array of integers.
+ * @returns {number[][]} An array of unique triplets that sum to zero.
+ *
+ * @example
+ * threeSum([-1, 0, 1, 2, -1, -4]); // Returns [[-1, -1, 2], [-1, 0, 1]]
+ * threeSum([]); // Returns []
+ *
+ * @see https://leetcode.com/problems/3sum/
+ */
+export function threeSum(nums: number[]): number[][] {
+  return [];
 }
