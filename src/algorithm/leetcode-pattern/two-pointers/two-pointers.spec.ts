@@ -101,8 +101,19 @@ describe('threeSum', () => {
         [-2, 0, 2],
         [-2, 1, 1]
       ]
-    ]
+    ],
+    [
+      [-1, -1, 0, 1, 1, 2, -4],
+      [
+        [-1, -1, 2],
+        [-1, 0, 1]
+      ]
+    ],
+    [[0, 0, 0, 0, 0], [[0, 0, 0]]],
+    [[1, 2, 3, 4, 5], []]
   ])('threeSum(%j) should return %j', (nums, expected) => {
+    const result = threeSum(nums);
+    expect(new Set(result.map(triplet => JSON.stringify(triplet))).size).toBe(result.length);
     expect(threeSum(nums)).toEqual(expect.arrayContaining(expected));
   });
 });
