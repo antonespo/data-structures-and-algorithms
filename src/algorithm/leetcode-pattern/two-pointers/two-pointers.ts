@@ -226,28 +226,27 @@ export function removeDuplicates(nums: number[]): number {
  */
 export function threeSum(nums: number[]): number[][] {
   const result: number[][] = [];
-  nums = nums.sort((a, b) => a - b);
+  nums.sort((a, b) => a - b);
 
   for (let a = 0; a < nums.length - 2; a++) {
-    if (a > 0 && nums[a] === nums[a - 1]) continue;
+    if (a > 0 && nums[a] === nums[a - 1]) continue; // Skip duplicates for 'a'
 
-    let left = a + 1;
-    let right = nums.length - 1;
+    let [left, right] = [a + 1, nums.length - 1];
     while (left < right) {
       const sum = nums[a] + nums[left] + nums[right];
       if (sum === 0) {
         result.push([nums[a], nums[left], nums[right]]);
-
-        while (left < right && nums[left] === nums[left + 1]) left++;
-        while (left < right && nums[right] === nums[right - 1]) right--;
+        while (nums[left] === nums[left + 1]) left++; // Skip duplicates for 'left'
+        while (nums[right] === nums[right - 1]) right--; // Skip duplicates for 'right'
         left++;
         right--;
-      } else if (sum > 0) {
-        right--;
+      } else if (sum < 0) {
+        left++;
       } else {
-        left++;
+        right--;
       }
     }
   }
+
   return result;
 }
