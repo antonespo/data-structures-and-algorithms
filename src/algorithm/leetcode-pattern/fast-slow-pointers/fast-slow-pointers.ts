@@ -3,66 +3,77 @@ import { SinglyLinkedList, SinglyLinkedListNode } from '../../../data-structure/
 /**
  * Finds the middle node of a singly linked list.
  *
- * This function uses the "Fast and Slow Pointer" technique to find the middle node efficiently in a single traversal.
- * The fast pointer moves two steps at a time, while the slow pointer moves one step at a time. When the fast pointer
- * reaches the end of the list, the slow pointer will be at the middle node. If the list has an even number of nodes,
- * the second middle node is returned by default.
+ * This function uses the Fast and Slow Pointer technique to find the middle node
+ * efficiently in a single traversal. If the list has an even number of nodes,
+ * it returns the second middle node.
  *
- * **Problem Context**:
- * - Linked lists do not have a direct way to access elements by index, unlike arrays. This makes the task of finding
- *   the middle node a non-trivial problem.
- * - Efficiently finding the middle node without traversing the list twice is a common interview question.
- *
- * @param list - The singly linked list.
- * @returns The value of the middle node, or `null` if the list is empty.
+ * @template T The type of the linked list's values.
+ * @param {SinglyLinkedList<T>} list The singly linked list.
+ * @returns {T | null} The value of the middle node, or `null` if the list is empty.
  *
  * @example
  * const list = new SinglyLinkedList<number>();
  * list.append(1);
  * list.append(2);
  * list.append(3);
- * list.append(4);
- * list.append(5);
- * findMiddle(list); // Returns 3
+ * findMiddle(list); // Returns 2
  *
  * @see https://leetcode.com/problems/middle-of-the-linked-list/
  */
 export function findMiddle<T>(list: SinglyLinkedList<T>): T | null {
-  // Implementation here
-  return null;
+  if (!list.head) {
+    return null;
+  }
+
+  let slow: SinglyLinkedListNode<T> | null = list.head;
+  let fast: SinglyLinkedListNode<T> | null = list.head;
+
+  while (fast && fast.next) {
+    slow = slow!.next;
+    fast = fast.next.next;
+  }
+
+  return slow?.value ?? null;
 }
 
 /**
  * Detects if a cycle exists in a singly linked list.
  *
- * This function uses Floyd's Cycle Detection Algorithm (also known as the Tortoise and Hare Algorithm).
- * A fast pointer moves two steps at a time, and a slow pointer moves one step at a time. If there is a cycle,
- * the fast pointer will eventually meet the slow pointer.
+ * This function uses Floyd's Cycle Detection Algorithm (Tortoise and Hare). A fast pointer
+ * moves two steps at a time, and a slow pointer moves one step. If there is a cycle,
+ * the two pointers will meet.
  *
- * **Problem Context**:
- * - In a singly linked list, there is no inherent structure to prevent cycles, where a node may point back to
- *   an earlier node instead of `null`.
- * - Detecting cycles is important to prevent infinite loops when processing linked lists in real-world applications.
- *
- * **Common Uses**:
- * - Verifying data integrity in linked list-based data structures.
- * - Preventing infinite loops in algorithms that traverse linked lists.
- *
- * @param head - The head node of the singly linked list.
- * @returns `true` if a cycle exists; otherwise, `false`.
+ * @template T The type of the linked list's values.
+ * @param {SinglyLinkedListNode<T> | null} head The head node of the singly linked list.
+ * @returns {boolean} `true` if a cycle exists, otherwise `false`.
  *
  * @example
- * const list = new SinglyLinkedList<number>();
  * const node1 = new SinglyLinkedListNode(1);
  * const node2 = new SinglyLinkedListNode(2);
- * list.head = node1;
+ * const node3 = new SinglyLinkedListNode(3);
  * node1.next = node2;
- * node2.next = node1; // Creates a cycle
- * hasCycle(list.head); // Returns true
+ * node2.next = node3;
+ * node3.next = node1; // Creates a cycle
+ * hasCycle(node1); // Returns true
  *
  * @see https://leetcode.com/problems/linked-list-cycle/
  */
 export function hasCycle<T>(head: SinglyLinkedListNode<T> | null): boolean {
-  // Implementation here
+  if (!head) {
+    return false;
+  }
+
+  let slow: SinglyLinkedListNode<T> | null = head;
+  let fast: SinglyLinkedListNode<T> | null = head;
+
+  while (fast && fast.next) {
+    slow = slow!.next;
+    fast = fast.next.next;
+
+    if (slow === fast) {
+      return true;
+    }
+  }
+
   return false;
 }
