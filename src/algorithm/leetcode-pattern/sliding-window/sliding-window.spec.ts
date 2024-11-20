@@ -1,4 +1,4 @@
-import { findMaxAverage, findRepeatedDnaSequences, getLongestSubstring, getLongestSubstringTwoDistinct } from './sliding-window';
+import { findMaxAverage, findRepeatedDnaSequences, getLongestSubstring, getLongestSubstringTwoDistinct, minSubArrayLen } from './sliding-window';
 
 describe('getLongestSubstring', () => {
   it.each([
@@ -79,5 +79,29 @@ describe('findMaxAverage', () => {
     { nums: [1], k: 1, expected: 1.0 }
   ])('should return $expected for input nums: $nums with k: $k', ({ nums, k, expected }) => {
     expect(findMaxAverage(nums, k)).toBeCloseTo(expected, 2);
+  });
+});
+
+describe('minSubArrayLen', () => {
+  it.each([
+    [7, [2, 3, 1, 2, 4, 3], 2], // Standard case
+    [4, [1, 4, 4], 1], // Single element satisfies target
+    [11, [1, 2, 3, 4, 5], 3], // Smallest subarray [4, 5]
+    [15, [1, 2, 3, 4, 5], 5], // Whole array required
+    [20, [1, 2, 3, 4, 5], 0], // No subarray meets the condition
+    [7, [], 0] // Empty array
+  ])('returns the minimum subarray length for target=%i and nums=%p', (target, nums, expected) => {
+    const result = minSubArrayLen(target, nums);
+    expect(result).toBe(expected);
+  });
+
+  it('handles edge case with large input', () => {
+    const largeArray = Array(100000).fill(1);
+    const target = 50000;
+    expect(minSubArrayLen(target, largeArray)).toBe(50000);
+  });
+
+  it('handles case where target is larger than all sums combined', () => {
+    expect(minSubArrayLen(100, [1, 2, 3])).toBe(0);
   });
 });

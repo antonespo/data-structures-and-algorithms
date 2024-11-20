@@ -156,3 +156,40 @@ export function findMaxAverage(nums: number[], k: number): number {
   }
   return maxAverage;
 }
+
+/**
+ * Finds the minimal length of a contiguous subarray of which the sum is greater than
+ * or equal to a given target. If no such subarray exists, returns 0.
+ *
+ * This function uses a sliding window approach to efficiently find the smallest
+ * subarray that meets the condition.
+ *
+ * @param {number} target - The target sum.
+ * @param {number[]} nums - The input array of integers.
+ * @returns {number} The length of the smallest subarray, or 0 if no such subarray exists.
+ *
+ * @example
+ * minSubArrayLen(7, [2, 3, 1, 2, 4, 3]); // Returns 2, as [4, 3] is the smallest subarray with sum >= 7.
+ * minSubArrayLen(4, [1, 4, 4]); // Returns 1, as [4] is the smallest subarray with sum >= 4.
+ * minSubArrayLen(11, [1, 1, 1, 1, 1, 1, 1, 1]); // Returns 0, as no subarray meets the condition.
+ *
+ * @see https://leetcode.com/problems/minimum-size-subarray-sum/
+ */
+export function minSubArrayLen(target: number, nums: number[]): number {
+  let start = 0;
+  let windowSum = 0;
+  let minWindow = Infinity;
+
+  for (let end = 0; end < nums.length; end++) {
+    windowSum += nums[end];
+
+    // Shrink the window while the current sum meets or exceeds the target.
+    while (windowSum >= target) {
+      minWindow = Math.min(minWindow, end - start + 1);
+      windowSum -= nums[start];
+      start++;
+    }
+  }
+
+  return minWindow === Infinity ? 0 : minWindow;
+}
