@@ -77,3 +77,64 @@ export function hasCycle<T>(head: SinglyLinkedListNode<T> | null): boolean {
 
   return false;
 }
+
+/**
+ * Determines if a singly linked list is a palindrome.
+ *
+ * This function uses the Fast and Slow Pointer technique to find the middle of the linked list.
+ * It then reverses the second half of the list and compares it with the first half to check
+ * if the list is a palindrome.
+ *
+ * @template T The type of the linked list's values.
+ * @param {SinglyLinkedList<T>} list The singly linked list.
+ * @returns {boolean} `true` if the list is a palindrome, `false` otherwise.
+ *
+ * @example
+ * const list = new SinglyLinkedList<number>();
+ * list.append(1);
+ * list.append(2);
+ * list.append(2);
+ * list.append(1);
+ * isPalindrome(list); // Returns true
+ *
+ * @see https://leetcode.com/problems/palindrome-linked-list/
+ */
+export function isPalindrome<T>(list: SinglyLinkedList<T>): boolean {
+  if (!list.head) {
+    return true;
+  }
+
+  // Step 1: Find the middle of the linked list.
+  let slow: SinglyLinkedListNode<T> | null = list.head;
+  let fast: SinglyLinkedListNode<T> | null = list.head;
+
+  while (fast && fast.next) {
+    slow = slow!.next;
+    fast = fast.next.next;
+  }
+
+  // Step 2: Reverse the second half of the list.
+  let prevNode: SinglyLinkedListNode<T> | null = null;
+  let current = slow;
+
+  while (current) {
+    const nextNode = current.next;
+    current.next = prevNode;
+    prevNode = current;
+    current = nextNode;
+  }
+
+  // Step 3: Compare the first half and the reversed second half.
+  let left: SinglyLinkedListNode<T> | null = list.head;
+  let right: SinglyLinkedListNode<T> | null = prevNode;
+
+  while (left && right) {
+    if (left.value !== right.value) {
+      return false;
+    }
+    left = left.next;
+    right = right.next;
+  }
+
+  return true;
+}

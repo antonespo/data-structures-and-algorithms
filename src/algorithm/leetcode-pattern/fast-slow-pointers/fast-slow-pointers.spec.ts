@@ -1,5 +1,5 @@
 import { SinglyLinkedList, SinglyLinkedListNode } from '../../../data-structure/linked-list/linked-list';
-import { findMiddle, hasCycle } from './fast-slow-pointers';
+import { findMiddle, hasCycle, isPalindrome } from './fast-slow-pointers';
 
 describe('findMiddle', () => {
   it.each([
@@ -53,5 +53,52 @@ describe('hasCycle', () => {
 
   it('returns false for an empty list', () => {
     expect(hasCycle(null)).toBe(false);
+  });
+});
+
+describe('isPalindrome', () => {
+  it('returns true for a palindrome list', () => {
+    const list = new SinglyLinkedList<number>();
+    list.append(1);
+    list.append(2);
+    list.append(2);
+    list.append(1);
+    expect(isPalindrome(list)).toBe(true);
+  });
+
+  it('returns false for a non-palindrome list', () => {
+    const list = new SinglyLinkedList<number>();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    expect(isPalindrome(list)).toBe(false);
+  });
+
+  it('returns true for an empty list', () => {
+    const list = new SinglyLinkedList<number>();
+    expect(isPalindrome(list)).toBe(true);
+  });
+
+  it('returns true for a single-node list', () => {
+    const list = new SinglyLinkedList<number>();
+    list.append(1);
+    expect(isPalindrome(list)).toBe(true);
+  });
+
+  it('handles odd-length palindromes', () => {
+    const list = new SinglyLinkedList<number>();
+    list.append(1);
+    list.append(2);
+    list.append(1);
+    expect(isPalindrome(list)).toBe(true);
+  });
+
+  it('handles even-length non-palindromes', () => {
+    const list = new SinglyLinkedList<number>();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    expect(isPalindrome(list)).toBe(false);
   });
 });
