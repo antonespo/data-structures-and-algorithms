@@ -76,12 +76,7 @@ describe('partition', () => {
     { input: 'a', expected: [['a']] },
     {
       input: 'racecar',
-      expected: [
-        ['r', 'a', 'c', 'e', 'c', 'a', 'r'],
-        ['r', 'a', 'cec', 'a', 'r'], // Added missing valid partition
-        ['r', 'aceca', 'r'],
-        ['racecar']
-      ]
+      expected: [['r', 'a', 'c', 'e', 'c', 'a', 'r'], ['r', 'a', 'cec', 'a', 'r'], ['r', 'aceca', 'r'], ['racecar']]
     },
     { input: 'ab', expected: [['a', 'b']] },
     { input: '', expected: [[]] }
