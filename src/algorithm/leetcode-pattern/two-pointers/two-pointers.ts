@@ -189,6 +189,8 @@ export function maxArea(height: number[]): number {
 }
 
 /**
+ * LeetCode Problem #26 - Remove Duplicates from Sorted Array
+ *
  * Removes duplicates from a sorted array in place, returning the length of the unique elements.
  *
  * @param {number[]} nums - The sorted array.
@@ -213,6 +215,8 @@ export function removeDuplicates(nums: number[]): number {
 }
 
 /**
+ * LeetCode Problem #15 - 3Sum
+ *
  * Finds all unique triplets in the array that sum to zero.
  *
  * @param {number[]} nums - The input array of integers.

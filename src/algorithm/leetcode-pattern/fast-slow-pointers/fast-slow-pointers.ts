@@ -1,6 +1,8 @@
 import { SinglyLinkedList, SinglyLinkedListNode } from '../../../data-structure/linked-list/linked-list';
 
 /**
+ * LeetCode Problem #876 - Middle of the Linked List
+ *
  * Finds the middle node of a singly linked list.
  *
  * This function uses the Fast and Slow Pointer technique to find the middle node
@@ -37,6 +39,8 @@ export function findMiddle<T>(list: SinglyLinkedList<T>): T | null {
 }
 
 /**
+ * LeetCode Problem #141 - Linked List Cycle
+ *
  * Detects if a cycle exists in a singly linked list.
  *
  * This function uses Floyd's Cycle Detection Algorithm (Tortoise and Hare). A fast pointer
@@ -79,6 +83,8 @@ export function hasCycle<T>(head: SinglyLinkedListNode<T> | null): boolean {
 }
 
 /**
+ * LeetCode Problem #234 - Palindrome Linked List
+ *
  * Determines if a singly linked list is a palindrome.
  *
  * This function uses the Fast and Slow Pointer technique to find the middle of the linked list.

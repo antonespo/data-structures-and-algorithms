@@ -158,6 +158,8 @@ export function findMaxAverage(nums: number[], k: number): number {
 }
 
 /**
+ * LeetCode Problem #209 - Minimum Size Subarray Sum
+ *
  * Finds the minimal length of a contiguous subarray of which the sum is greater than
  * or equal to a given target. If no such subarray exists, returns 0.
  *

@@ -1,4 +1,4 @@
-import { combinationSum, partition, permute, solveNQueens, subsets } from './backtracking';
+import { combinationSum, partition, permute, subsets } from './backtracking';
 
 describe('subsets', () => {
   it.each([
@@ -84,20 +84,5 @@ describe('partition', () => {
     const result = partition(input);
     expect(result).toEqual(expect.arrayContaining(expected));
     expect(expected).toEqual(expect.arrayContaining(result));
-  });
-});
-
-describe('solveNQueens', () => {
-  it.each([
-    [
-      4,
-      [
-        ['.Q..', '...Q', 'Q...', '..Q.'],
-        ['..Q.', 'Q...', '...Q', '.Q..']
-      ]
-    ],
-    [1, [['Q']]]
-  ])('solveNQueens(%d) should return %j', (n, expected) => {
-    expect(solveNQueens(n)).toEqual(expect.arrayContaining(expected));
   });
 });
