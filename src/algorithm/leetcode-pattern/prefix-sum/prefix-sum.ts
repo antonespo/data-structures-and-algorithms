@@ -37,28 +37,40 @@ export function rangeSum(nums: number[], i: number, j: number): number {
  * @see https://leetcode.com/problems/contiguous-array/
  */
 export function findMaxLength(nums: number[]): number {
-  // Hash map to store the first occurrence of a prefix sum
-  const map = new Map<number, number>();
-  map.set(0, -1); // Base case: a sum of 0 before any elements has an index of -1
-
-  let prefixSum = 0; // The running prefix sum
   let maxLength = 0; // The maximum length of subarray found so far
+  let prefixSum = 0; // The running prefix sum, adjusted as we go through the array
 
-  // Iterate through the array
+  // Hash map to store the first occurrence of a prefix sum.
+  // Key: prefixSum, Value: index of the first occurrence of that prefixSum
+  const map = new Map<number, number>();
+
+  // Initialize the map with a prefix sum of 0 at index -1 to handle edge cases
+  // where the subarray starts from the very beginning of the array.
+  map.set(prefixSum, -1);
+
+  // Iterate through the array to calculate the maximum length of subarrays
+  // with an equal number of 1s and 0s.
   for (let i = 0; i < nums.length; i++) {
-    // Adjust the prefix sum: treat 0 as -1 and 1 as 1
-    prefixSum = prefixSum + (nums[i] === 0 ? -1 : 1);
+    // Adjust the prefix sum:
+    // Treat 0 as -1 and 1 as 1. This way, the problem becomes finding a subarray
+    // whose sum is 0 (i.e., the difference between the number of 1s and 0s is zero).
+    prefixSum += nums[i] === 0 ? -1 : 1;
 
-    // If this prefix sum has been seen before, calculate the subarray length
+    // Check if this prefix sum has been encountered before.
+    // If it has, it means there's a subarray between the previous index and the
+    // current index where the sum is zero (the number of 1s equals the number of 0s).
     if (map.has(prefixSum)) {
-      // The length of the subarray is the difference between the current index and the first occurrence of the prefix sum
+      // Calculate the length of the subarray.
+      // The subarray length is the difference between the current index and the index
+      // of the first occurrence of the same prefix sum.
       maxLength = Math.max(maxLength, i - map.get(prefixSum)!);
     } else {
-      // Otherwise, store the first occurrence of this prefix sum
+      // Otherwise, store the first occurrence of this prefix sum in the map.
       map.set(prefixSum, i);
     }
   }
 
+  // Return the maximum length of subarray found
   return maxLength;
 }
 
@@ -78,18 +90,33 @@ export function findMaxLength(nums: number[]): number {
  * @see https://leetcode.com/problems/subarray-sum-equals-k/
  */
 export function subarraySum(nums: number[], k: number): number {
-  const prefixMap = new Map<number, number>();
-  prefixMap.set(0, 1);
-  let prefixSum = 0;
-  let count = 0;
+  let count = 0; // Initialize the count of subarrays whose sum equals k
+  let prefixSum = 0; // Running sum of elements as we iterate through the array
 
+  // Hash map to store the prefix sum and its frequency of occurrence
+  // We initialize the map with prefixSum = 0 having a frequency of 1
+  // This accounts for the case where a prefix sum equals k at the start of the array
+  const map = new Map<number, number>();
+  map.set(prefixSum, 1);
+
+  // Iterate through each number in the array
   for (const num of nums) {
-    prefixSum += num;
-    if (prefixMap.has(prefixSum - k)) {
-      count += prefixMap.get(prefixSum - k)!;
+    prefixSum += num; // Update the running prefix sum by adding the current element
+
+    // If (prefixSum - k) exists in the map, it means there is a subarray
+    // whose sum equals k, starting from some previous index to the current index.
+    // We add the frequency of (prefixSum - k) to the count
+    if (map.has(prefixSum - k)) {
+      count += map.get(prefixSum - k)!;
     }
-    prefixMap.set(prefixSum, (prefixMap.get(prefixSum) || 0) + 1);
+
+    // Update the map with the current prefix sum.
+    // If the prefixSum has been seen before, increment its count.
+    // Otherwise, initialize it to 1 (this is the first occurrence).
+    map.set(prefixSum, (map.get(prefixSum) || 0) + 1);
   }
+
+  // Return the total count of subarrays whose sum equals k
   return count;
 }
 
