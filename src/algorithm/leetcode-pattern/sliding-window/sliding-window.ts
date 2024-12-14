@@ -167,7 +167,7 @@ export function findMaxAverage(nums: number[], k: number): number {
  * subarray that meets the condition.
  *
  * @param {number} target - The target sum.
- * @param {number[]} nums - The input array of integers.
+ * @param {number[]} nums - The input array of positive integers.
  * @returns {number} The length of the smallest subarray, or 0 if no such subarray exists.
  *
  * @example
