@@ -70,10 +70,11 @@ Explore [Sorting Algorithms](./src/algorithm/sorting/sorting.md) including:
 - [Fast & Slow Pointers](./src/algorithm/leetcode-pattern/fast-slow-pointers/fast-slow-pointers.md) ✅
 - [Backtracking](./src/algorithm/leetcode-pattern/backtracking/backtracking.md) ✅
 - [Prefix Sum](./src/algorithm/leetcode-pattern/prefix-sum/prefix-sum.md) 🏗️
-- [LinkedList In-place Reversal](./src/algorithm/leetcode-pattern/linked-list-reversal/linked-list-reversal.md) 🏗️
-- [Monotonic Stack](./src/algorithm/leetcode-pattern/monotonic-stack/monotonic-stack.md) 🏗️
-- [Top K Elements](./src/algorithm/leetcode-pattern/top-K-elements/top-K-elements.md) 🏗️
-- [Overlapping Intervals](./src/algorithm/leetcode-pattern/overlapping-intervals/overlapping-intervals.md) 🏗️
+- [Kadane Algorithm](./src/algorithm/leetcode-pattern/kadane-algorithm/kadane-algorithm.md)
+- [Linked List In-place Reversal](./src/algorithm/leetcode-pattern/linked-list-reversal/linked-list-reversal.md)
+- [Monotonic Stack](./src/algorithm/leetcode-pattern/monotonic-stack/monotonic-stack.md)
+- [Top K Elements](./src/algorithm/leetcode-pattern/top-K-elements/top-K-elements.md)
+- [Overlapping Intervals](./src/algorithm/leetcode-pattern/overlapping-intervals/overlapping-intervals.md)
 
 ### Tree Traversal Algorithms
 
