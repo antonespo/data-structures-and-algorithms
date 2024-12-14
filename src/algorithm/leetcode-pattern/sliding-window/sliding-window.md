@@ -24,8 +24,12 @@ The Sliding Window pattern is a commonly used approach to optimize the performan
 
 ## Pros and Cons
 
-- **Pros**: Efficient for problems involving continuous subarrays or sublists.
-- **Cons**: Generally limited to one-dimensional data structures (e.g., arrays, strings).
+- Pros:
+  - Efficient for problems involving continuous subarrays or substrings.
+  - Reduces time complexity significantly by replacing nested loops with a single pass through the array.
+- Cons:
+  - Generally limited to one-dimensional data structures (e.g., arrays, strings).
+  - May not work efficiently when the array contains negative numbers or requires a more complex analysis (e.g., finding exact sums with negative and positive integers).
 
 ## When to Use
 

@@ -1,4 +1,11 @@
-import { findMaxAverage, findRepeatedDnaSequences, getLongestSubstring, getLongestSubstringTwoDistinct, minSubArrayLen } from './sliding-window';
+import {
+  findMaxAverage,
+  findRepeatedDnaSequences,
+  getLongestSubstring,
+  getLongestSubstringTwoDistinct,
+  longestSubarray,
+  minSubArrayLen
+} from './sliding-window';
 
 describe('getLongestSubstring', () => {
   it.each([
@@ -79,6 +86,18 @@ describe('findMaxAverage', () => {
     { nums: [1], k: 1, expected: 1.0 }
   ])('should return $expected for input nums: $nums with k: $k', ({ nums, k, expected }) => {
     expect(findMaxAverage(nums, k)).toBeCloseTo(expected, 2);
+  });
+});
+
+describe('longestSubarray', () => {
+  it.each([
+    [[1, 2, 3, 4], 5, 2], // Example 1: Longest subarray with sum <= 5
+    [[1, 1, 1, 1], 2, 2], // Example 2: Longest subarray with sum <= 2
+    [[10, 2, 3, 1, 4], 7, 3], // Example 3: Longest subarray with sum <= 7
+    [[1, 1, 1, 1, 1], 5, 5], // Example 4: Longest subarray with sum <= 5
+    [[], 5, 0] // Example 5: Empty array
+  ])('should return the correct result for nums = %p and target = %d', (nums, k, expected) => {
+    expect(longestSubarray(nums, k)).toBe(expected);
   });
 });
 

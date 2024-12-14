@@ -158,6 +158,49 @@ export function findMaxAverage(nums: number[], k: number): number {
 }
 
 /**
+ * LeetCode Problem #642 - Longest Subarray with Sum at Most `k`
+ *
+ * Finds the length of the longest subarray with a sum less than or equal to a given target `k`.
+ *
+ * This function uses the sliding window approach to efficiently find the longest subarray that meets the condition.
+ *
+ * @param {number[]} nums - The input array of positive integers.
+ * @param {number} k - The target sum threshold.
+ * @returns {number} The length of the longest subarray with sum <= `k`.
+ *
+ * @example
+ * longestSubarray([1, 2, 3, 4], 5); // Returns 3, as the longest subarray with sum <= 5 is [1, 2, 3].
+ * longestSubarray([1, 1, 1, 1], 2); // Returns 2, as the longest subarray with sum <= 2 is [1, 1].
+ * longestSubarray([10, 2, 3, 1, 4], 7); // Returns 3, as the longest subarray with sum <= 7 is [2, 3, 1].
+ * longestSubarray([1, 1, 1, 1, 1], 5); // Returns 5, as the longest subarray with sum <= 5 is [1, 1, 1, 1, 1].
+ * longestSubarray([], 5); // Returns 0, as no subarray exists.
+ *
+ * @see https://leetcode.com/problems/longest-subarray-with-sum-at-most-k/
+ */
+export function longestSubarray(nums: number[], k: number): number {
+  let maxLength = 0;
+  let currentSum = 0;
+  let start = 0;
+
+  for (let end = 0; end < nums.length; end++) {
+    currentSum += nums[end]; // Expand the window by adding nums[end]
+
+    // Shrink the window while the current sum exceeds k
+    while (currentSum > k && start <= end) {
+      currentSum -= nums[start];
+      start++;
+    }
+
+    // Track the maximum length of the subarray whose sum is <= k
+    if (currentSum <= k) {
+      maxLength = Math.max(maxLength, end - start + 1);
+    }
+  }
+
+  return maxLength;
+}
+
+/**
  * LeetCode Problem #209 - Minimum Size Subarray Sum
  *
  * Finds the minimal length of a contiguous subarray of which the sum is greater than
