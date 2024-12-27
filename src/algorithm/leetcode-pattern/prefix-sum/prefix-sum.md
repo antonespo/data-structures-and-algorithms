@@ -10,28 +10,15 @@ The pattern can be implemented using either an array or a hash map to store the 
 
 1. **Build the Prefix Sum Array or Map**:
 
-   - **Array**: Create an array `prefixSum` where each element stores the cumulative sum up to that index.
-
-     - The formula to compute the array is:
-       ```
-       prefixSum[i] = prefixSum[i-1] + nums[i] (for i > 0)
-       prefixSum[0] = nums[0]
-       ```
-
-   - **Hash Map**: Alternatively, use a hash map `prefixSumMap` where each key represents a unique cumulative sum and the value stores the number of times that sum has occurred.
-     - This can help in problems where you need to efficiently count subarrays or ranges with a specific sum.
+   - **Array**: Create an array where each element stores the cumulative sum up to that index.
+   - **Hash Map**: Alternatively, use a hash map where each key represents a unique cumulative sum and the value stores the number of times that sum has occurred. This can help in problems where you need to efficiently count subarrays or ranges with a specific sum.
 
 2. **Use the Prefix Sum for Range Queries**:
 
-   - Once the `prefixSum` (array or map) is ready, you can compute the sum of elements between any two indices \(i\) and \(j\) (inclusive) in constant time:
-     - **Array**:
-       ```
-       sum[i:j] = prefixSum[j] - prefixSum[i-1]
-       ```
-     - **Map**:
-       - The map stores each prefix sum as a key, and you can use it to find subarrays by checking if `prefixSum - k` exists in the map, which allows you to detect subarrays that sum to a given target `k`.
+   - Once the prefix sum (array or map) is ready, you can compute the sum of elements between any two indices in constant time.
 
 3. **Iterate Through the Input**:
+
    - For each query or condition, use the precomputed prefix sums (whether in an array or map) to extract results without recalculating sums from scratch.
 
 ## Common Use Cases
