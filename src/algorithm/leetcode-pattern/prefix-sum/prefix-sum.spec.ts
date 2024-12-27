@@ -1,4 +1,4 @@
-import { findMaxLength, pivotIndex, rangeSum, subarraySum } from './prefix-sum';
+import { findMaxLength, maxSubArray, pivotIndex, rangeSum, subarraySum } from './prefix-sum';
 
 describe('rangeSum', () => {
   it.each([
@@ -47,5 +47,19 @@ describe('pivotIndex', () => {
     [[0, 0, 0, 0, 1], 4]
   ])('pivotIndex(%j) should return %d', (nums, expected) => {
     expect(pivotIndex(nums)).toBe(expected);
+  });
+});
+
+describe('maxSubArray', () => {
+  it.each([
+    { input: [-2, 1, -3, 4, -1, 2, 1, -5, 4], expected: 6 },
+    { input: [1], expected: 1 },
+    { input: [5, 4, -1, 7, 8], expected: 23 },
+    { input: [-1, -2, -3, -4], expected: -1 },
+    { input: [8, -19, 5, -4, 20], expected: 21 },
+    { input: [1, 2, 3, 4, 5], expected: 15 },
+    { input: [-2, -3, 4, -1, -2, 1, 5, -3], expected: 7 }
+  ])("should return $expected for input '$input'", ({ input, expected }) => {
+    expect(maxSubArray(input)).toBe(expected);
   });
 });

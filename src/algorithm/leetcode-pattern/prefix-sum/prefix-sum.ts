@@ -146,3 +146,33 @@ export function pivotIndex(nums: number[]): number {
   }
   return -1;
 }
+
+/**
+ * LeetCode Problem #53 - Maximum Subarray
+ *
+ * Finds the maximum sum of a contiguous subarray within a one-dimensional numeric array.
+ *
+ * @param {number[]} nums - The input array of numbers.
+ * @returns {number} - The maximum sum of a contiguous subarray.
+ *
+ * @example
+ * maxSubArray([-2,1,-3,4,-1,2,1,-5,4]); // Returns 6, as [4,-1,2,1] has the largest sum.
+ *
+ * This implementation uses a dynamic programming approach to track the maximum sum of subarrays
+ * ending at each position and the overall maximum sum found so far.
+ *
+ * @see https://leetcode.com/problems/maximum-subarray/
+ */
+export function maxSubArray(nums: number[]): number {
+  let max = -Infinity;
+  let prefixSum = 0;
+  let minPrefixSum = 0;
+
+  for (const num of nums) {
+    prefixSum = prefixSum + num;
+    max = Math.max(max, prefixSum - minPrefixSum);
+    minPrefixSum = Math.min(minPrefixSum, prefixSum);
+  }
+
+  return max;
+}

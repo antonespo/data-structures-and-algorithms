@@ -4,6 +4,7 @@ import {
   getLongestSubstring,
   getLongestSubstringTwoDistinct,
   longestSubarray,
+  maxProduct,
   minSubArrayLen
 } from './sliding-window';
 
@@ -122,5 +123,18 @@ describe('minSubArrayLen', () => {
 
   it('handles case where target is larger than all sums combined', () => {
     expect(minSubArrayLen(100, [1, 2, 3])).toBe(0);
+  });
+});
+
+describe('maxProduct', () => {
+  it.each([
+    { input: [2, 3, -2, 4], expected: 6 },
+    { input: [-2, 0, -1], expected: 0 },
+    { input: [-2, 3, -4], expected: 24 },
+    { input: [0, 2], expected: 2 },
+    { input: [-2, -3, 7], expected: 42 },
+    { input: [2, -5, -2, -4, 3], expected: 24 }
+  ])("should return $expected for input '$input'", ({ input, expected }) => {
+    expect(maxProduct(input)).toBeCloseTo(expected);
   });
 });

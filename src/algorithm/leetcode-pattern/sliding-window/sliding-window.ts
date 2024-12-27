@@ -238,3 +238,44 @@ export function minSubArrayLen(target: number, nums: number[]): number {
 
   return minWindow === Infinity ? 0 : minWindow;
 }
+
+/**
+ * LeetCode Problem #152 - Maximum Product Subarray
+ *
+ * Finds the maximum product of a contiguous subarray within a one-dimensional numeric array.
+ *
+ * @param {number[]} nums - The input array of numbers.
+ * @returns {number} - The maximum product of a contiguous subarray.
+ *
+ * @example
+ * maxProduct([2,3,-2,4]); // Returns 6, as [2,3] has the largest product.
+ * maxProduct([-2,0,-1]); // Returns 0, as [0] is the largest product.
+ *
+ * @see https://leetcode.com/problems/maximum-product-subarray/
+ * @see https://www.youtube.com/watch?v=Y6B-7ZctiW8&t=712s&ab_channel=NikhilLohia
+ */
+export function maxProduct(nums: number[]): number {
+  if (nums.length === 0) return 0;
+
+  let maxProduct = -Infinity; // Tracks the maximum product overall
+  let currentProduct = 1; // Tracks the current running product
+
+  // Left-to-right pass
+  for (let num of nums) {
+    currentProduct *= num;
+    maxProduct = Math.max(maxProduct, currentProduct);
+    if (currentProduct === 0) currentProduct = 1; // Reset product on zero
+  }
+
+  // Reset for the right-to-left pass
+  currentProduct = 1;
+
+  // Right-to-left pass
+  for (let i = nums.length - 1; i >= 0; i--) {
+    currentProduct *= nums[i];
+    maxProduct = Math.max(maxProduct, currentProduct);
+    if (currentProduct === 0) currentProduct = 1; // Reset product on zero
+  }
+
+  return maxProduct;
+}
